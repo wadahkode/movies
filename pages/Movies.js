@@ -40,23 +40,23 @@ class Movies extends React.Component {
 
   render() {
     const { status, data } = this.state.popup;
+    const { items } = this.state;
 
     return (
       <>
-        <InfiniteScroll
-          dataLength={this.state.items.length}
-          next={this.getMoreMovies}
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "2rem",
-          }}
-          hasMore={true}
-          loader={<div></div>}
-        >
-          {this.state.items
-            .slice(this.state.x, this.state.y)
-            .map((item, key) => (
+        {items && (
+          <InfiniteScroll
+            dataLength={items.length}
+            next={this.getMoreMovies}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: "2rem",
+            }}
+            hasMore={true}
+            loader={<div></div>}
+          >
+            {items.slice(this.state.x, this.state.y).map((item, key) => (
               <div
                 key={key}
                 className={styles.card}
@@ -83,7 +83,8 @@ class Movies extends React.Component {
                 </div>
               </div>
             ))}
-        </InfiniteScroll>
+          </InfiniteScroll>
+        )}
         {status && (
           <div className={styles.popup}>
             <div className={styles["popup-body"]}>
