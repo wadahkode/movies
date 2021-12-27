@@ -6,12 +6,13 @@ class MoviesSearch extends React.Component {
     super(props);
     this.state = {
       query: {},
+      apiKey: props.api,
     };
   }
 
   searchMovies = async (event) => {
     const value = event.target.value;
-    const url = "http://www.omdbapi.com/?apikey=d3f8751a";
+    const url = "http://www.omdbapi.com/?apikey=" + this.state.apiKey;
     const res = await fetch(url + "&s=" + value);
     const result = await res.json();
 

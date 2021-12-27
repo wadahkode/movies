@@ -44,7 +44,7 @@ export default function Home(props) {
       <nav className={styles.navbar}>
         <h1 className={styles.title}>Movies</h1>
         <div className="search">
-          <MoviesSearch />
+          <MoviesSearch api={props.apiKey} />
         </div>
       </nav>
 
@@ -58,7 +58,7 @@ export default function Home(props) {
 }
 
 export const getStaticProps = async () => {
-  const url = "http://www.omdbapi.com/?apikey=d3f8751a";
+  const url = "http://www.omdbapi.com/?apikey=" + process.env.API_KEY;
 
   const getDataMovies = async (callback) => {
     for (let title of moviesList) {
@@ -74,6 +74,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       data: dataMovies,
+      apiKey: process.env.API_KEY,
     },
   };
 };
