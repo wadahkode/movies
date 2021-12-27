@@ -38,6 +38,10 @@ export default function Home(props) {
         <title>Movies</title>
         <meta name="description" content="movies" />
         <meta name="author" content="wadahkode" />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -58,7 +62,7 @@ export default function Home(props) {
 }
 
 export const getStaticProps = async () => {
-  const url = "http://www.omdbapi.com/?apikey=" + process.env.VERCEL_API_KEY;
+  const url = "https://www.omdbapi.com/?apikey=" + process.env.VERCEL_API_KEY;
 
   const getDataMovies = async (callback) => {
     for (let title of moviesList) {
