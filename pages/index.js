@@ -58,7 +58,7 @@ export default function Home(props) {
 }
 
 export const getStaticProps = async () => {
-  const url = "http://www.omdbapi.com/?apikey=" + process.env.API_KEY;
+  const url = "http://www.omdbapi.com/?apikey=" + process.env.VERCEL_API_KEY;
 
   const getDataMovies = async (callback) => {
     for (let title of moviesList) {
@@ -74,7 +74,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       data: dataMovies,
-      apiKey: process.env.API_KEY,
+      apiKey: process.env.VERCEL_API_KEY,
     },
   };
 };

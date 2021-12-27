@@ -63,6 +63,11 @@ class MoviesSearch extends React.Component {
                         ? "https://img.icons8.com/ios-filled/50/000000/no-image.png"
                         : item.Poster
                     }
+                    srcSet={
+                      item.Poster == "N/A"
+                        ? "https://img.icons8.com/ios-filled/50/000000/no-image.png"
+                        : item.Poster
+                    }
                     width={32}
                     height={32}
                     alt="No image"

@@ -64,7 +64,11 @@ class Movies extends React.Component {
               >
                 <picture>
                   <Image
-                    src={item.Poster}
+                    src={
+                      item.Poster == "N/A"
+                        ? "https://img.icons8.com/ios-filled/50/000000/no-image.png"
+                        : item.Poster
+                    }
                     srcSet={
                       item.Poster == "N/A"
                         ? "https://img.icons8.com/ios-filled/50/000000/no-image.png"
